@@ -18,17 +18,12 @@
 
     using namespace std;
 
-    struct node
-
-    {
+    struct node{
 
         int data;
-
         struct node *next;
-
         struct node *prev;
-
-    }*start;
+    }*head;
 
      
 
@@ -46,23 +41,21 @@
 
             void create_ListElement(int index); // Create Double Link List
 
-            void Add_Element_At_The_begining_Of_The_list(int index); 
+            void Add_Element_At_The_begining_Of_The_list(int index); //Adds an element at the beginning of the list.
 
-            void Add_Element_At_The_End_Of_The_list(int Element_Val, int location);
+            void Add_Element_At_The_End_Of_The_list(int Element_Val, int location);// Adds an element at the end of the list.
 
             void deleteElement(int index); //Deletion of element from the list
 
-            //void getElement(int index);
+            void printLinkedListHead();//Displays the complete list in a forward manner.
 
-            void printLinkedListHead();
+            void printLinkedListTail();// Displays the complete list in a backward manner.
 
-            void printLinkedListTail();
-
-            double_LinkedlList()
+            double_LinkedlList() // structure 
 
             {
 
-                start = NULL;  
+                head = NULL;  
 
             }
 
@@ -72,7 +65,7 @@
 
     /*
 
-     * Main: Conatins Menu
+     * Main function
 
      */
 
@@ -158,7 +151,7 @@
 
             case 4:
 
-                if (start == NULL)
+                if (head == NULL)
 
                 {                      
 
@@ -180,7 +173,7 @@
 
             case 6:
 
-                if (start == NULL)
+                if (head == NULL)
 
                 {
 
@@ -232,13 +225,13 @@
 
         temp->next = NULL;
 
-        if (start == NULL)
+        if (head == NULL)
 
         {
 
             temp->prev = NULL;
 
-            start = temp;
+            head = temp;
 
         }
 
@@ -246,7 +239,7 @@
 
         {
 
-            s = start;
+            s = head;
 
             while (s->next != NULL)
 
@@ -272,7 +265,7 @@
 
     {
 
-        if (start == NULL)
+        if (head == NULL)
 
         {
 
@@ -290,11 +283,11 @@
 
         temp->data = index;
 
-        temp->next = start;
+        temp->next = head;
 
-        start->prev = temp;
+        head->prev = temp;
 
-        start = temp;
+        head = temp;
 
         cout<<"Element Inserted"<<endl;
 
@@ -312,7 +305,7 @@
 
     {
 
-        if (start == NULL)
+        if (head == NULL)
 
         {
 
@@ -326,7 +319,7 @@
 
         int i;
 
-        q = start;
+        q = head;
 
         for (i = 0;i < loc - 1;i++)
 
@@ -398,15 +391,15 @@
 
          /*first element deletion*/
 
-        if (start->data == index)
+        if (head->data == index)
 
         {
 
-            tmp = start;
+            tmp = head;
 
-            start = start->next;  
+            head = head->next;  
 
-            start->prev = NULL;
+            head->prev = NULL;
 
             cout<<"First Element Deleted"<<endl;
 
@@ -416,7 +409,7 @@
 
         }
 
-        q = start;
+        q = head;
 
         while (q->next->next != NULL)
 
@@ -482,7 +475,7 @@
 
         struct node *q;
 
-        if (start == NULL)
+        if (head == NULL)
 
         {
 
@@ -492,7 +485,7 @@
 
         }
 
-        q = start;
+        q = head;
 
         cout<<"The Doubly Link List is :"<<endl;
 
@@ -526,7 +519,7 @@
 
         struct node *p1, *p2;
 
-        p1 = start;
+        p1 = head;
 
         p2 = p1->next;
 
@@ -548,7 +541,7 @@
 
         }
 
-        start = p1;
+        head = p1;
 
         cout<<"List Reversed"<<endl; 
 
